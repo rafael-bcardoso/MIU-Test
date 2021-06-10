@@ -1,0 +1,51 @@
+.success-icon {
+  height: auto !important;
+}
+
+.btn-add{
+  float: right;
+  width: 130px;
+  margin: 10px 3px;
+  cursor: pointer;
+}
+
+nb-checkbox {
+  margin-bottom: 1rem;
+}
+
+.form-inline [fullWidth] {
+  flex: 1;
+}
+
+.form-inline > * {
+  margin: 0 1.5rem 1.5rem 0;
+}
+
+.model-full {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.form-group{
+  display: flex;
+}
+
+.col-md-6{
+  padding-left: 0;
+}
+
+.col-md-12{
+  padding-left: 0;
+}
+
+.col-md-4{
+  padding-left: 0;
+}
+
+.col-custom{
+  padding-right: 0;
+}
+
+.ng2-smart-table>th{
+  text-align: center !important;
+}

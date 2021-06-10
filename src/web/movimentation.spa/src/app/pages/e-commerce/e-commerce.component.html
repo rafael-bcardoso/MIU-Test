@@ -1,0 +1,143 @@
+<nb-card>
+  <nb-card-header>
+    Movimentaçoes Financeiras
+  </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (delete)="onDeleteMovimentation($event)" (edit)="onEditMovimentation($event.data, movimentationEdit)">
+    </ng2-smart-table>
+    <button nbButton status="success" class="btn-add" (click)="addMovimentation(movimentationAdd)">
+      <nb-icon [icon]="icon" pack="fa" class="success-icon"></nb-icon>
+      Adicionar
+    </button>
+  </nb-card-body>
+</nb-card>
+
+<ng-template #movimentationEdit>
+  <nb-card style="width: 1000px;">
+    <nb-card-header>
+      <nb-icon [icon]="iconMoney" pack="fa" class="success-icon"></nb-icon>
+      Editar Movimentação Financeira
+    </nb-card-header>
+    <nb-card-body>
+      <form class="form-horizontal" [formGroup]="movimentationForm">
+
+        <div class="form-group g-0">
+          <div class="col-md-6">
+            <label for="tributeCode" class="label">Código do Tributo</label>
+            <input type="text" nbInput fullWidth id="tributeCode" placeholder="Código do Tributo" mask="0*" formControlName="tributeCode">
+          </div>
+          <div class="col-md-6 col-custom">
+            <label for="customerName" class="label">Nome Cliente</label>
+            <input type="text" nbInput fullWidth id="customerName" placeholder="Nome Cliente" formControlName="customerName">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-6">
+            <label for="cpf" class="label">CPF</label>
+            <input type="text" nbInput fullWidth id="cpf" placeholder="CPF" mask="000.000.000-00" formControlName="cpf">
+          </div>
+          <div class="col-md-6 col-custom">
+            <label for="movimentationdate" class="label">Data Movimentação</label>
+            <input type="text" nbInput fullWidth id="movimentationdate" placeholder="Data Movimentação" mask="d0/M0/0000" formControlName="movimentationDate">
+          </div>
+        </div>
+
+        <div class="form-group g-0">
+          <div class=" col-md-4 ">
+            <label for="movimentationGain" class="label">Valor Rendimento da Movimentação</label>
+            <input type="text" nbInput fullWidth id="movimentationGain" placeholder="Valor Rendimento da Movimentação" mask="0*,00" formControlName="movimentationGain">
+          </div>
+          <div class="col-md-4">
+            <label for="tributeAliquot" class="label">Alíquota do Tributo</label>
+            <input type="text" nbInput fullWidth id="tributeAliquot" placeholder="Alíquota do Tributo" mask="0*,00" formControlName="tributeAliquot">
+          </div>
+          <div class=" col-md-4 col-custom">
+            <label for="movimentationLoss" class="label">Tributo Movimentação</label>
+            <input type="text" nbInput readonly fullWidth id="movimentationLoss" placeholder="Tributo da Movimentação" mask="0*,00" formControlName="movimentationLoss">
+          </div>
+        </div>
+
+        <div class="form-group g-0">
+          <div class="col-md-12 col-custom">
+            <label for="tributeDescription" class="label">Descrição do Tributo</label>
+            <textarea type="email" nbInput fullWidth id="tributeDescription" placeholder="Descrição do Tributo" formControlName="tributeDescription">
+            </textarea>
+          </div>
+        </div>
+
+      </form>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton status="success" class="btn-add" (click)="updateMovimentation()">
+        Salvar
+      </button>
+      <button nbButton status="danger" class="btn-add" (click)="cancelMovimentation(dialog)">
+        Cancelar
+      </button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>
+
+<ng-template #movimentationAdd>
+  <nb-card style="width: 1000px;">
+    <nb-card-header>
+      <nb-icon [icon]="iconMoney" pack="fa" class="success-icon"></nb-icon>
+      Adicionar Movimentação Financeira
+    </nb-card-header>
+    <nb-card-body>
+      <form class="form-horizontal" [formGroup]="movimentationForm">
+
+        <div class="form-group g-0">
+          <div class="col-md-6">
+            <label for="tributeCode" class="label">Código do Tributo</label>
+            <input type="text" nbInput fullWidth id="tributeCode" placeholder="Código do Tributo" mask="0*" formControlName="tributeCode">
+          </div>
+          <div class="col-md-6 col-custom">
+            <label for="customerName" class="label">Nome Cliente</label>
+            <input type="text" nbInput fullWidth id="customerName" placeholder="Nome Cliente" formControlName="customerName">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-6">
+            <label for="cpf" class="label">CPF</label>
+            <input type="text" nbInput fullWidth id="cpf" placeholder="CPF" mask="000.000.000-00" formControlName="cpf">
+          </div>
+          <div class="col-md-6 col-custom">
+            <label for="movimentationdate" class="label">Data Movimentação</label>
+            <input type="text" nbInput fullWidth id="movimentationdate" placeholder="Data Movimentação" mask="d0/M0/0000" formControlName="movimentationDate">
+          </div>
+        </div>
+
+        <div class="form-group g-0">
+          <div class=" col-md-6">
+            <label for="movimentationGain" class="label">Valor Rendimento da Movimentação</label>
+            <input type="text" nbInput fullWidth id="movimentationGain" placeholder="Valor Rendimento da Movimentação" mask="0*,00" formControlName="movimentationGain">
+          </div>
+          <div class="col-md-6 col-custom">
+            <label for="tributeAliquot" class="label">Alíquota do Tributo</label>
+            <input type="text" nbInput fullWidth id="tributeAliquot" placeholder="Alíquota do Tributo" mask="0*,00" formControlName="tributeAliquot">
+          </div>
+        </div>
+
+        <div class="form-group g-0">
+          <div class="col-md-12 col-custom">
+            <label for="tributeDescription" class="label">Descrição do Tributo</label>
+            <textarea type="email" nbInput fullWidth id="tributeDescription" placeholder="Descrição do Tributo" formControlName="tributeDescription">
+            </textarea>
+          </div>
+        </div>
+
+      </form>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton status="success" class="btn-add" (click)="saveMovimentation()">
+        Salvar
+      </button>
+      <button nbButton status="danger" class="btn-add" (click)="cancelMovimentation(dialog)">
+        Cancelar
+      </button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

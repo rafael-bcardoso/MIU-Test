@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\buildingblocks\MIU.Core\MIU.Core.csproj" />
+    <ProjectReference Include="..\MIU.Movimentation.Domain\MIU.Movimentations.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
